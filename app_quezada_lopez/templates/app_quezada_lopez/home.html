@@ -1,0 +1,48 @@
+{% extends 'app_quezada_lopez/base.html' %}
+{% load static %}
+{% block contenido %}
+
+
+{% if request.user.is_authenticated %}
+<style>
+.casa{
+    background: #0a122a;
+    width: auto;
+}
+
+
+
+</style>
+<div class="casa">
+<img class="casa-img" src="{% static 'app_quezada_lopez/imagenes/logo.jpg' %}">
+
+<class="bienvenida">
+<h4>
+    Bienvenido, {{ user.username | upper }}
+    </h4>
+    {% if user.is_superuser %}
+            <h4>Eres un administrador. te estamos redireccionando a la pagina mantenedor</h4>
+            <script>
+                setTimeout(function() {
+                    window.location.href = "{% url 'mantenedor' %}";
+                }, 5000);
+                </script>            
+            
+        {% else %}
+            <h4>te estamos redireccionando a la pagina de productos.</h4>
+            <script>
+                
+                setTimeout(function() {
+                    window.location.href = "{% url 'mantenedor' %}";
+                }, 5000);
+                </script>
+            
+        {% endif %}
+
+</div>
+</div>
+
+{% endif %}
+
+
+    {% endblock %}

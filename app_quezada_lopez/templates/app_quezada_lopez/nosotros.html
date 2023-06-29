@@ -1,0 +1,53 @@
+{% extends 'app_quezada_lopez/base.html' %}
+
+{% block contenido %}
+
+{% load static %}
+
+<title>Nosotros</title>
+
+
+
+    <section> <!--Primera Seccion-->
+    
+
+        <div class="section_1">
+            <div class="row">
+                <div class="col-5">
+                    <br>
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-interval="1000" >
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="{% static 'app_quezada_lopez/imagenes/vision_1.jpeg' %}" class="d-block w-100"  alt="..."  width="500" height="250">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{% static 'app_quezada_lopez/imagenes/mision.jpeg' %}" class= "d-block w-100" alt="..."  width="500" height="250">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{% static 'app_quezada_lopez/imagenes/misvision.jpeg' %}" class="d-block w-100" alt="..."  width="500" height="250">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-7">
+                    <br>
+                    <h5><b>QUIENES SOMOS</b></h5>
+                    <p>Un equipo formado por mecánicos titulados dando un mejor el servicio de reparación y mantención de sus vehículos.
+                        Este equipo nace de la necesidad de la gente de tener un servicio personalizado y transparente al momento de efectuar la reparación o mantención de su auto con la calidad y mismos servicios de un concesionario pagando lo justo.
+                        <!--El año 2016 a nuestro equipo se le otorgó el reconocimiento de ser el tercer taller del sector oriente y el mejor taller dedicado a autos alemanes, con este reconocimiento nació la idea de independizarse y ofrecer un servicio distinto elevando aún más los estándares de calidad.
+                        -->
+                        Somos especialista en mantenciones para grandes marcas.
+                        Trabajamos con productos Alemanes 100% originales.
+                        Ahorra hasta 50% en tu mantencion. Te entregamos tu auto en el día..</p>
+                    <h5>MISIÓN</h5>
+                    <p>Proporcionar un buen servicio de mantenimiento automotriz en general, conservando los autos de nuestros clientes en un estado de operación eficiente y seguro, satisfaciendo sus necesidades y expectativas en el mejor tiempo posible. A sabiendas de que usted y su vehículo son lo más importante.</p>       
+                    <h5>VISIÓN</h5> 
+                    <p>Llegar a ser el taller líder y confiable a nivel zona, en los próximos 3 años, una vez cumplido ese objetivo mantenernos como los mejores en el mercado, ofreciendo el servicio para automóviles modernos y unidades diésel, siendo reconocidos por la calidad en nuestros servicios, honestidad y precios justos.</p> 
+                </div>
+            </div>
+        </div>
+
+    </section> <!--Termino Primera seccion-->    
+
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends 'app_quezada_lopez/base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+{% load crispy_forms_tags %}
+
+
+<style>
+  /* Estilos para el formulario */
+  *{
+          
+          /*background-color: #0a122a;*/
+          color: white;
+      }
+
+  .forma {
+      max-width: auto;
+      margin: 0 auto;
+      padding: 50px;
+      background-color: #0a122a;
+      color: #0a122a;
+  }
+
+  /* Estilos para los campos de entrada */
+  .forma input[type="text"],
+  .forma input[type="email"],
+  .forma input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      /*background-color: #1c2739;*/
+      background-color: #5d93eb; 
+      color: white;
+      border: #0a122a;
+      border-radius: 4px;
+      box-sizing: border-box;
+  }
+
+  /* Estilos para las etiquetas de los campos */
+  .forma label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color:white;
+      background: #0a122a;
+  }
+
+  /* Estilos para los enlaces */
+  .forma a {
+      color: white;
+      text-decoration: none;
+      margin-right: 10px;
+  }
+
+  /* Estilos para el botón de envío */
+  .forma button[type="submit"] {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+  }
+
+  .forma button[type="submit"]:hover {
+      background-color: #0056b3;
+  }
+
+  .card-body{
+    background: #0a122a;
+
+  }
+</style>
+
+
+
+
+<form class="forma" action="" method="post">
+    {% csrf_token %}
+
+    <div class="card mx-auto" style="width: 30rem;">
+        <div class="card-body">
+          <h5 class="card-title">Ingresar</h5>
+          <h5 class="card-title">Ingrese sus Credenciales</h5>
+          {{ form | crispy }}
+          <a href="{% url 'index' %}" class="card-link">Inicio</a>
+          <a href="{% url 'register'%}" class="card-link">Registrarse</a>
+
+          <button class="btn btn-sm btn-primary float-end" type="submit">Iniciar Sesion</button>
+      
+        </div>
+      </div>
+       
+</form>
+
+    {% endblock %}

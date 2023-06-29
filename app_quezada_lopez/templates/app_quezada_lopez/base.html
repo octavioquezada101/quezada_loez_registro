@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app_quezada_lopez/css/base.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="icon" href="{% static 'app_quezada_lopez/imagenes/logo.jpg' %}">
+    
+    <link rel="stylesheet" href="{% static 'app_quezada_lopez/css/contacto.css' %}">
+    <link rel="stylesheet" href="{% static 'app_quezada_lopez/css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'app_quezada_lopez/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'app_quezada_lopez/css/nosotros.css' %}">
+    <link rel="stylesheet" href="{% static 'app_quezada_lopez/css/servicios.css' %}">
+    <link rel="stylesheet" href="{% static 'app_quezada_lopez/css/ubicacion.css' %}">
+    <link rel="stylesheet" href="{% static 'app_quezada_lopez/css/register.css' %}">
+   
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-black">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'app_quezada_lopez/imagenes/insignia.png' %}" height="100" width="100" alt=""></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'index' %}">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'nosotros' %}">Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'servicios' %}">Servicios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contacto' %}">Contactanos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'ubicacion' %}">Visítanos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'mantenedor' %}">Productos</a>
+                        </li>
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'logout' %}">Salir</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'login'%}">Ingresar</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'register'%}">Registrarse</a>
+                        </li>
+                        {% endif %}
+                      
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!--Fin header-->
+
+        {% block contenido %}
+        {% endblock %}
+
+    <footer class="footer"> <!--Comienzo Footer-->
+        <div class="red">
+          <a href="http://www.instagram.com" target="_blank">
+            <img src="{% static 'app_quezada_lopez/imagenes/insta.png' %}"height="30px" width="30px" alt="">
+          </a>
+          <a href="http://www.facebook.com" target="_blank">
+            <img src="{% static 'app_quezada_lopez/imagenes/face.png' %}"height="30px" width="30px" alt="">
+          </a>
+          <a href="http://www.whatsapp.com" target="_blank">
+            <img src="{% static 'app_quezada_lopez/imagenes/what.png' %}"height="30px" width="30px" alt="">
+          </a>
+        </div>
+        <div class="derechos">
+            ©Copyright 2023. Octavio Quezada & Paul Lopez. 
+            <br>Todos los derechos reservados.                                         
+        </div>
+        </div> 
+    </footer>
+
+    <script src="{% static 'app_quezada_lopez/js/jquery-3.6.4.min.js' %}" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+
+
+

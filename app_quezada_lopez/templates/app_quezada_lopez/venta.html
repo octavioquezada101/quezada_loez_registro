@@ -1,0 +1,127 @@
+{% extends 'app_quezada_lopez/base.html' %}
+
+{% block contenido %}
+
+{% load static %}
+<style>
+   
+.container {
+    margin: 0px;
+    padding: 0px 100px 100px 100px; 
+    background: #0a122a;
+    color:white;
+
+    
+}
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td,
+#customers th {
+    border: 1px solid rgb(253, 252, 252);
+    padding: 6px;
+}
+
+#customers tr:nth-child(even) {
+    background-color: #152b6e;
+}
+
+#customers tr:hover {
+    background-color: #ddd;
+}
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #152b6e;
+    color: white;
+}
+
+#customers #mid {
+    text-align: center;
+}
+
+#customers #up {
+    background-color: #007bff;
+    border-color: white;
+    border-radius: 5px;
+    padding: 8px;
+    color: white;
+}
+
+#customers #del {
+    background-color: #007bff;
+    border-color: white;
+    border-radius: 5px;
+    padding: 8px;
+    color: white;
+}
+
+#customers button {
+    width: 100%;
+}
+
+.container1 #new {
+    background-color: blue;
+    border-color: red;
+    border-radius: 5px;
+    padding: 8px;
+    color: white;
+}
+
+h1 {
+    color: white;
+}
+
+.container2 input {
+    padding: 8px;
+}
+
+.container #new3 {
+    padding: 8px;
+    background-color:#007bff;
+    color: white;
+    border-radius: 4px;
+    border-color: white;
+}
+</style>
+
+<body>
+    <div class="contenedor">
+    <div class="container">
+        <h1>Productos</h1>
+        <table id="customers" border="1">
+            <thead>
+                <th>Id</th>
+                <th>Nombre del producto</th>
+                <th>Descripcion</th>
+                <th>Valor</th>
+                <th>Foto</th>
+                
+            </thead>
+            {% for x in pro %}
+              <tr>
+                  <td>{{x.id}}</td>
+                  <td>{{x.nombre_produ}}</td>
+                  <td>{{x.descripcion}}</td>
+                  <td>{{x.valor}}</td>
+                  <td>{% if x.foto %}
+                    <img src="{{ x.foto.url }}" alt="Imagen del Producto" height="100px" width="100px">
+                {% else %}
+                    Sin imagen
+                {% endif %}</td>
+
+
+              </tr>
+            {% endfor %}
+        </table>
+        <br>
+        
+    </div>
+</div>    
+</body>
+{% endblock %}
+

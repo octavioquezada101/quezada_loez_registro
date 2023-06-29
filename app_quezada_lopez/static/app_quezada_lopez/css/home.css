@@ -1,0 +1,35 @@
+/*informacion util
+
+Pasos para crear super user:
+1.python manage.py makemigrations
+2.python manage.py migrate
+3.python manage.py createsuperuser
+------------------------------------------
+Super user informacion:
+Se accede pomiendo http://127.0.0.1:8000/admin  (http numero variable)
+user:asimi
+email:pau.lopezo@duocuc.cl
+pass:12345678
+------------------------------------------
+
+*/
+.casa-img{
+    position: relative;
+    left: 45%;
+    border-radius: 50%;
+    width: 200px;
+    
+
+}
+
+
+h4{
+    position: relative;
+    background-color: black;
+    
+}
+
+h4:hover{
+    background-color: #899B9F;
+
+}

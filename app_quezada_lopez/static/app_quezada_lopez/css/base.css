@@ -1,0 +1,53 @@
+/* MENU Y FORMATO BASICO HTML */
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+    }
+
+
+    .navbar-nav a {
+        color: white;
+    }
+
+    .navbar-nav a:hover{
+
+        transition: all 0.5s ease;
+        background-color: #899B9F;
+        border-radius: 5px; 
+    
+    
+    }
+
+/*PRINCIPIO FOOTER*/
+
+    .footer{
+        color: white;
+        height: 55px;
+        position: relative;
+        background-color: #899B9F;
+    }
+
+    .red{
+        position:absolute;
+        right: 0;
+        padding-right: 5px;
+        padding-top : 9px;
+    }
+
+    .derechos{
+        text-shadow: 1px 2px 2px black, 0 0 25px #899B9F, 0 0 5px #899B9F;
+        text-align: center;
+        justify-content: center;
+        color: white;
+        border-radius: 5px;
+        left: 0;
+        position: absolute;
+        padding-top: 5px;
+        padding-left: 4px;
+        text-align: justify;  
+    }
+
+
