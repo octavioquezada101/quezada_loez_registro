@@ -26,6 +26,9 @@ def contacto(request):
 def ubicacion(request):
     return render(request, 'app_quezada_lopez/ubicacion.html')
 
+def comprar(request, id):
+    return render(request, 'app_quezada_lopez/comprar.html')
+
 
 @login_required
 def venta(request):

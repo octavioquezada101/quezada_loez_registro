@@ -8,6 +8,7 @@ from . views import venta
 from . views import register
 from . views import home
 from . views import agregar
+from . views import comprar
 from . views import agregarrec
 from . views import eliminar
 from . views import actualizar
@@ -27,6 +28,7 @@ urlpatterns = [
     path('agregar/', agregar,name='agregar'),
     path('agregarrec/',agregarrec, name='agregarrec'),
     path('eliminar/<int:id>/', eliminar,name='eliminar'),
+    path('comprar/<int:id>/', comprar, name='comprar' ),
     path('actualizar/<int:id>/',actualizar,name='actualizar'),
     path('actualizar/actualizarrec/<int:id>/',actualizarrec,name='actualizarrec'),
     path('register/', register, name='register'),

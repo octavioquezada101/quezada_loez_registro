@@ -100,8 +100,18 @@
         padding: 0px 250px;
       }
     }
-    </style>
-    
+</style>
+
+<script>
+    function confirmarEliminacion() {
+        var confirmacion = confirm("¿Estás seguro que quieres eliminar el producto?");
+        if (confirmacion) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
 
 <body>
     <div class="contenedor">
@@ -126,16 +136,20 @@
                       <td>{{ x.valor }}</td>
                       <td>
                           {% if x.foto %}
-                                
                               <img src="{{ x.foto.url }}" alt="Imagen del Producto" height="100px" width="100px">
-                         
                           {% else %}
                               Sin imagen
                           {% endif %}
                       </td>
                       {% if user.is_superuser %}
                           <td><a href="actualizar/{{ x.id }}"><button id="up">Actualizar</button></a></td>
-                          <td><a href="eliminar/{{ x.id }}"><button id="del">Eliminar</button></a></td>
+                          <td>
+                              <a href="eliminar/{{ x.id }}" onclick="return confirmarEliminacion();">
+                                  <button id="del">Eliminar</button>
+                              </a>
+                          </td>
+                      {% else %}
+                      <td><a href="comprar/{{ x.id }}"><button id="up">comprar</button></a></td>
                       {% endif %}
                   </tr>
                 {% endfor %}
@@ -148,6 +162,3 @@
     </div>  
 </body>
 {% endblock %}
-
-
-
