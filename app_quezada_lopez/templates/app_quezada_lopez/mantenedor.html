@@ -147,7 +147,7 @@
                           {% if x.foto %}
                               <img src="{{ x.foto.url }}" alt="Imagen del Producto" height="100px" width="100px">
                           {% else %}
-                              Sin imagen
+                              <img src="{% static 'app_quezada_lopez/imagenes/sin_imagen.jpg' %}" alt="Imagen actual" height="100px" width="100px"> 
                           {% endif %}
                       </td>
                       {% if user.is_superuser %}

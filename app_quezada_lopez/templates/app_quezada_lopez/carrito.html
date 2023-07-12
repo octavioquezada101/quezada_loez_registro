@@ -11,17 +11,19 @@
         <tr>
             <th scope="row" colspan="3" class="text-center">CARRITO</th>
         </tr>
-        <tr>
-            <th scope="col">NOMBRE</th>
-            <th scope="col">VALOR UNITARIO</th>
-            <th scope="col">CANTIDAD</th>            
-            <th scope="col">SUBTOTAL</th>
 
-        </tr>
        </thead>
        <tbody>
         {% if request.session.carrito.items %}
         {% for key, value in request.session.carrito.items %}
+        <tr>
+            <th scope="col">NOMBRE</th>
+            <th scope="col">VALOR UNITARIO</th>
+            <!--<th scope="col">FOTO</th>-->
+            <th scope="col">CANTIDAD</th>            
+            <th scope="col">SUBTOTAL</th>
+
+        </tr>
             <tr>
                 <td>{{value.nombre}}</td>
                 <td>$ {{value.valor}}</td>
@@ -35,7 +37,14 @@
         {% else %}
          <tr>
             <td colspan="3">
-                <div class="alert alert-danger text-center">Sin Productos</div>
+                
+                <img src="{% static 'app_quezada_lopez/imagenes/sincompras.jpg' %}" alt="Imagen actual" height="140px" width="140px">
+                <div class="alert alert-danger text-center">Sin Productos lo estamos redireccionando a pagina de tienda</div>
+                <script>
+                    setTimeout(function() {
+                        window.location.href = "{% url 'mantenedor' %}";
+                    }, 5000);
+                    </script> 
             </td>
          </tr>   
          {% endif %}
@@ -43,7 +52,7 @@
             <tr>
                 <td></td>
                 <td></td>
-                <th scope="row">Total : </th>
+                <th scope="row">Total a pagar: </th>
                 <td colspan="2">$ {{total_carrito}}</td>
             </tr>
          </div> 

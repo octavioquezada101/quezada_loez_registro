@@ -118,6 +118,8 @@ button {
             <label class="fotito" for="foto">Imagen del Producto</label><br>
             {% if pro.foto %}
                 <img class="foto-centro" src="{{ pro.foto.url }}" alt="Imagen actual" height="100px" width="100px">
+            {% else %}
+                <img src="{% static 'app_quezada_lopez/imagenes/sin_imagen.jpg' %}" alt="Imagen actual" height="100px" width="100px">            
             {% endif %}            
             <input type="file" name="foto" id="new">
             <label for="new"></label>
