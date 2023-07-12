@@ -7,9 +7,18 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout, authenticate, login
 from .forms import CustomUserCreationForm
 from app_quezada_lopez.models import Productos
+from .carrito import Carrito
+
+def carrito(request):
+    productos = Productos.objects.all()
+    return render(request, 'app_quezada_lopez/carrito.html', {'productos':productos})
+
 
 def home(request):
     return render(request, 'app_quezada_lopez/home.html')
+
+def pagar(request):
+    return render(request, 'app_quezada_lopez/pagar.html')
 
 def index(request):
     return render(request, 'app_quezada_lopez/index.html')
@@ -26,9 +35,33 @@ def contacto(request):
 def ubicacion(request):
     return render(request, 'app_quezada_lopez/ubicacion.html')
 
-def comprar(request, id):
-    return render(request, 'app_quezada_lopez/comprar.html')
+#def comprar(request, id):
+#    return render(request, 'app_quezada_lopez/comprar.html')
 
+
+
+def agregar_producto(request, producto_id):
+    carrito = Carrito(request)
+    pro = Productos.objects.get(id=producto_id)
+    carrito.agregar_carrito(pro)
+    return redirect("carrito")
+
+def eliminar_producto(request, producto_id):
+    carrito = Carrito(request)
+    pro = Productos.objects.get(id=producto_id)
+    carrito.eliminar(pro)
+    return redirect("carrito")
+
+def restar_producto(request, producto_id):
+    carrito = Carrito(request)
+    pro = Productos.objects.get(id=producto_id)
+    carrito.restar(pro)
+    return redirect("carrito")
+
+def limpiar_carrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect("carrito")
 
 @login_required
 def venta(request):

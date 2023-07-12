@@ -100,7 +100,15 @@
         padding: 0px 250px;
       }
     }
+
+    /*.caja-elimina {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }*/
 </style>
+
 
 <script>
     function confirmarEliminacion() {
@@ -111,11 +119,13 @@
             return false;
         }
     }
+
 </script>
 
+
 <body>
-    <div class="contenedor">
-        <div class="container">
+  <div class="contenedor">     
+        <div class="container">          
             <h1>Productos</h1>
             <table id="customers" border="1">
                 <thead>
@@ -124,16 +134,15 @@
                     <th>Descripción</th>
                     <th>Valor</th>
                     <th>Foto</th>
-                    {% if user.is_superuser %}
-                        <th colspan="2" id="mid">Realizar</th>
-                    {% endif %}
+                    <th colspan="2" id="mid">Realizar</th>
+                 
                 </thead>
                 {% for x in pro %}
                   <tr>
                       <td>{{ x.id }}</td>
                       <td>{{ x.nombre_produ }}</td>
                       <td>{{ x.descripcion }}</td>
-                      <td>{{ x.valor }}</td>
+                      <td>${{ x.valor }}</td>
                       <td>
                           {% if x.foto %}
                               <img src="{{ x.foto.url }}" alt="Imagen del Producto" height="100px" width="100px">
@@ -144,21 +153,24 @@
                       {% if user.is_superuser %}
                           <td><a href="actualizar/{{ x.id }}"><button id="up">Actualizar</button></a></td>
                           <td>
-                              <a href="eliminar/{{ x.id }}" onclick="return confirmarEliminacion();">
+                            <a href="eliminar/{{ x.id }}" class="caja-elimina" onclick="return confirmarEliminacion();">
                                   <button id="del">Eliminar</button>
-                              </a>
+                            </a>
                           </td>
                       {% else %}
-                      <td><a href="comprar/{{ x.id }}"><button id="up">comprar</button></a></td>
+                      <td><a href="{% url 'Add' x.id %}"><button type="">agregar al carrito</button></a></td>
                       {% endif %}
                   </tr>
                 {% endfor %}
             </table>
+
             <br>
             {% if user.is_superuser %}
                 <a href="{% url 'agregar' %}"><button id="new3">Agregar Producto</button></a>
             {% endif %}
         </div>
-    </div>  
+
+  </div>
+
 </body>
 {% endblock %}

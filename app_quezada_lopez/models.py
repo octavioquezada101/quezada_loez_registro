@@ -7,4 +7,7 @@ class Productos(models.Model):
     valor=models.IntegerField()
     foto=models.ImageField(upload_to='', null=True)
 
+    def __str__(self):
+            return f'{self.nombre_produ} -> {self.precio}'
+
 
