@@ -120,7 +120,7 @@
     <div class="col-3"><a href="{% url 'mantenedor' %}" class="limpiar">Seguir Comprando</a></div>
     <div class="col-3">
         {% if request.session.carrito.items %}
-        <a href="{% url 'pagar' %}" class="pagaroff">Pagar</a>
+        <a href="{% url 'boleta' %}" class="pagaroff">Pagar</a>
         {% else %}
         <a class="pagaron" disabled>Pagar</a>
         {% endif %}

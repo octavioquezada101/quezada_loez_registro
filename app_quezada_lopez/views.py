@@ -21,6 +21,8 @@ def vacio(request):
 
 def pagar(request):
     return render(request, 'app_quezada_lopez/pagar.html')
+def boleta(request):
+    return render(request, 'app_quezada_lopez/boleta.html')
 
 def index(request):
     return render(request, 'app_quezada_lopez/index.html')
@@ -151,3 +153,15 @@ def actualizarrec(request, id):
     return render(request, 'app_quezada_lopez/actualizar.html', {'pro': pro})
 
 
+def pagar(request):
+    # Realizar todas las operaciones necesarias para completar el pago
+    
+    # Obtener el contexto con los valores necesarios para la boleta
+    contexto_boleta = {
+        'total_carrito': total_carrito,
+        'request': request,
+        # Otros valores necesarios para la boleta
+    }
+    
+    # Renderizar la página de la boleta con el contexto adecuado
+    return render(request, 'boleta.html', contexto_boleta)

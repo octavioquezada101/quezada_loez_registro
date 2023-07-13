@@ -1,0 +1,103 @@
+{% extends 'app_quezada_lopez/base.html' %}
+
+{% load static %}
+{% block contenido %}
+
+<style>
+    .boleta {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin: 20px auto;
+        width: 500px;
+        text-align: center;
+    }
+
+    .boleta h2 {
+        margin-top: 0;
+    }
+
+    .boleta table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    .boleta th,
+    .boleta td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .boleta tfoot td {
+        font-weight: bold;
+    }
+
+    .boleta .boton-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .boleta .boton-imprimir,
+    .boleta .boton-redireccionar {
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        padding: 8px;
+        text-decoration: none;
+        width: 150px;
+        margin: 0 10px;
+        text-align: center;
+    }
+
+    /* Estilos para impresión */
+    @media print {
+        .boton-wrapper,
+        .boton-imprimir,
+        .boton-redireccionar {
+            display: none;
+        }
+    }
+</style>
+
+<div class="boleta">
+    <h2>Boleta de Pago</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Valor Unitario</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, value in request.session.carrito.items %}
+                <tr>
+                    <td>{{ value.nombre }}</td>
+                    <td>$ {{ value.valor }}</td>
+                    <td>{{ value.cantidad }}</td>
+                    <td>$ {{ value.acumulado }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Total a pagar:</td>
+                <td>$ {{ total_carrito }}</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <p>Gracias por su compra.</p>
+
+    <div class="boton-wrapper">
+        <a href="javascript:window.print()" class="boton-imprimir">Imprimir Boleta</a>
+        <a href="{% url 'mantenedor' %}" class="boton-redireccionar">Seguir comprando</a>
+    </div>
+</div>
+
+{% endblock %}
