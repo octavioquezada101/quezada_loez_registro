@@ -4,15 +4,15 @@
 {% block contenido %}
 
 <style>
-    .principal{
+    .principal {
         background: #0a122a;
         border-bottom: 0px;
-      }
-
-    .table{
-        color:white;
-
     }
+
+    .table {
+        color: white;
+    }
+
     .botonera {
         background: #0a122a;
         display: flex;
@@ -31,6 +31,7 @@
         font-size: 20px;
         text-decoration: none;
     }
+
     .pagaron {
         background-color: #4a535c;
         color: white;
@@ -39,6 +40,7 @@
         font-size: 20px;
         text-decoration: none;
     }
+
     .pagaroff {
         background-color: #0056b3;
         color: white;
@@ -48,73 +50,73 @@
         text-decoration: none;
     }
 
-    .sincompra td {
+    .sincompra {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        height: 100vh;
+       justify-content: center;
+         align-items: center;
+    /*    flex-direction: column;
+        height: 100vh;*/
+    }
+
+    .sincompra img {
+        margin: 0px;
     }
 </style>
 
-<div class="principal" role ="alert">
-<div class="table-responsive">
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <h1 scope="row" colspan="3" class="text-center">CARRO DE COMPRAS</h1>
-        </tr>
-        <tr>
-            <th scope="col">NOMBRE</th>
-            <th scope="col">VALOR UNITARIO</th>
-            <th scope="col">CANTIDAD</th>            
-            <th scope="col">SUBTOTAL</th>
-
-        </tr>
-       </thead>
-       <tbody>
-        {% if request.session.carrito.items %}
-        {% for key, value in request.session.carrito.items %}
-
-            <tr>
-                <td>{{value.nombre}}</td>
-                <td>$ {{value.valor}}</td>
-                <td>{{value.cantidad}}</td>                
-                <td>$ {{value.acumulado}}
-                    <a href="{% url 'Add' value.producto_id %}" class="badge btn btn-dark badge-dark">+</a>
-                    <a href="{% url 'Sub' value.producto_id %}" class="badge btn btn-dark badge-dark">-</a>
-                </td>
-            </tr>
-        {% endfor %}
-        {% else %}
-         <tr>
-            <td colspan="3">
-                <div>
-                <img src="{% static 'app_quezada_lopez/imagenes/sincompras.jpg' %}" class="sincompra" alt="Imagen actual" height="140px" width="140px">
-                <div class="alert alert-danger text-center">Sin Productos lo estamos redireccionando a pagina de tienda</div>
-                </div>
-                <script>
-                    setTimeout(function() {
-                        window.location.href = "{% url 'mantenedor' %}";
-                    }, 3000);
-                    </script> 
-            </td>
-         </tr>   
-         {% endif %}
-        
-            <tr>
-                <td></td>
-                <td></td>
-                <th scope="row">Total a pagar: </th>
-                <td colspan="2">$ {{total_carrito}}</td>
-            </tr>
-         
-        </tbody>
-    
-</table> 
+<div class="principal" role="alert">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <h1 scope="row" colspan="3" class="text-center">CARRO DE COMPRAS</h1>
+                </tr>
+                <tr>
+                    <th scope="col">NOMBRE</th>
+                    <th scope="col">VALOR UNITARIO</th>
+                    <th scope="col">CANTIDAD</th>
+                    <th scope="col">SUBTOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if request.session.carrito.items %}
+                {% for key, value in request.session.carrito.items %}
+                <tr>
+                    <td>{{ value.nombre }}</td>
+                    <td>$ {{ value.valor }}</td>
+                    <td>{{ value.cantidad }}</td>
+                    <td>$ {{ value.acumulado }}
+                        <a href="{% url 'Add' value.producto_id %}" class="badge btn btn-dark badge-dark">+</a>
+                        <a href="{% url 'Sub' value.producto_id %}" class="badge btn btn-dark badge-dark">-</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="3">
+                        <div class="sincompra">
+                            <img src="{% static 'app_quezada_lopez/imagenes/sincompras.jpg' %}" alt="Imagen actual" height="140px" width="140px">
+                            <div class="alert alert-danger text-center">Sin Productos lo estamos redireccionando a la página de tienda</div>
+                            <img src="{% static 'app_quezada_lopez/imagenes/sincompras.jpg' %}" alt="Imagen actual" height="140px" width="140px"
+                        </div>
+                        <script>
+                            setTimeout(function() {
+                                window.location.href = "{% url 'mantenedor' %}";
+                            }, 5000);
+                        </script>
+                    </td>
+                </tr>
+                {% endif %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <th scope="row">Total a pagar: </th>
+                    <td colspan="2">$ {{ total_carrito }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
-</div>
 <div class="botonera">
     <div class="col-3"><a href="{% url 'CLS' %}" class="limpiar">Limpiar</a></div>
     <div class="col-3"><a href="{% url 'mantenedor' %}" class="limpiar">Seguir Comprando</a></div>
@@ -124,9 +126,7 @@
         {% else %}
         <a class="pagaron" disabled>Pagar</a>
         {% endif %}
-        </div>
+    </div>
 </div>
-
-
 
 {% endblock %}

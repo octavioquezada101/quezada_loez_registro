@@ -56,7 +56,9 @@
     @media print {
         .boton-wrapper,
         .boton-imprimir,
-        .boton-redireccionar {
+        .boton-redireccionar,
+        header,
+        footer {
             display: none;
         }
     }
@@ -69,7 +71,7 @@
         <thead>
             <tr>
                 <th>Nombre</th>
-                <th>Valor Unitario</th>
+                <th>Valor neto</th>
                 <th>Cantidad</th>
                 <th>Subtotal</th>
             </tr>
@@ -78,16 +80,16 @@
             {% for key, value in request.session.carrito.items %}
                 <tr>
                     <td>{{ value.nombre }}</td>
-                    <td>$ {{ value.valor }}</td>
+                    <td>$ {{ value.valor|floatformat:0 }}</td>
                     <td>{{ value.cantidad }}</td>
-                    <td>$ {{ value.acumulado }}</td>
+                    <td>$ {{ value.acumulado|floatformat:0 }}</td>
                 </tr>
             {% endfor %}
         </tbody>
         <tfoot>
             <tr>
                 <td colspan="3">Total a pagar:</td>
-                <td>$ {{ total_carrito }}</td>
+                <td>$ {{ total_carrito|floatformat:0 }}</td>
             </tr>
         </tfoot>
     </table>
