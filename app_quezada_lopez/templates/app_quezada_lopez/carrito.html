@@ -3,27 +3,79 @@
 {% load static %}
 {% block contenido %}
 
+<style>
+    .principal{
+        background: #0a122a;
+        border-bottom: 0px;
+      }
 
+    .table{
+        color:white;
 
-<div class="alert alert-primary" role ="alert">
+    }
+    .botonera {
+        background: #0a122a;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0px;
+        padding: 10px 10px;
+        top: 0px;
+    }
+
+    .limpiar {
+        background-color: #0056b3;
+        color: white;
+        border-radius: 20px;
+        padding: 8px 18px;
+        font-size: 20px;
+        text-decoration: none;
+    }
+    .pagaron {
+        background-color: #4a535c;
+        color: white;
+        border-radius: 20px;
+        padding: 8px 18px;
+        font-size: 20px;
+        text-decoration: none;
+    }
+    .pagaroff {
+        background-color: #0056b3;
+        color: white;
+        border-radius: 20px;
+        padding: 8px 18px;
+        font-size: 20px;
+        text-decoration: none;
+    }
+
+    .sincompra td {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+    }
+</style>
+
+<div class="principal" role ="alert">
+<div class="table-responsive">
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th scope="row" colspan="3" class="text-center">CARRITO</th>
+            <h1 scope="row" colspan="3" class="text-center">CARRO DE COMPRAS</h1>
         </tr>
-
-       </thead>
-       <tbody>
-        {% if request.session.carrito.items %}
-        {% for key, value in request.session.carrito.items %}
         <tr>
             <th scope="col">NOMBRE</th>
             <th scope="col">VALOR UNITARIO</th>
-            <!--<th scope="col">FOTO</th>-->
             <th scope="col">CANTIDAD</th>            
             <th scope="col">SUBTOTAL</th>
 
         </tr>
+       </thead>
+       <tbody>
+        {% if request.session.carrito.items %}
+        {% for key, value in request.session.carrito.items %}
+
             <tr>
                 <td>{{value.nombre}}</td>
                 <td>$ {{value.valor}}</td>
@@ -37,33 +89,44 @@
         {% else %}
          <tr>
             <td colspan="3">
-                
-                <img src="{% static 'app_quezada_lopez/imagenes/sincompras.jpg' %}" alt="Imagen actual" height="140px" width="140px">
+                <div>
+                <img src="{% static 'app_quezada_lopez/imagenes/sincompras.jpg' %}" class="sincompra" alt="Imagen actual" height="140px" width="140px">
                 <div class="alert alert-danger text-center">Sin Productos lo estamos redireccionando a pagina de tienda</div>
+                </div>
                 <script>
                     setTimeout(function() {
                         window.location.href = "{% url 'mantenedor' %}";
-                    }, 5000);
+                    }, 3000);
                     </script> 
             </td>
          </tr>   
          {% endif %}
-         <div>  
+        
             <tr>
                 <td></td>
                 <td></td>
                 <th scope="row">Total a pagar: </th>
                 <td colspan="2">$ {{total_carrito}}</td>
             </tr>
-         </div> 
+         
         </tbody>
+    
 </table> 
-<hr>
 </div>
-<div class="row text-center">
-    <div class="col-3"><a href="{% url 'CLS' %}" class="btn btn-danger">Limpiar</a></div>
-    <div class="col-3"><a href="{% url 'mantenedor' %}" class="btn btn-danger">Seguir Comprando</a></div>
-    <div class="col-3"><a href="{% url 'pagar' %}" class="btn btn-danger">Pagar</a></div>
+
 </div>
+<div class="botonera">
+    <div class="col-3"><a href="{% url 'CLS' %}" class="limpiar">Limpiar</a></div>
+    <div class="col-3"><a href="{% url 'mantenedor' %}" class="limpiar">Seguir Comprando</a></div>
+    <div class="col-3">
+        {% if request.session.carrito.items %}
+        <a href="{% url 'pagar' %}" class="pagaroff">Pagar</a>
+        {% else %}
+        <a class="pagaron" disabled>Pagar</a>
+        {% endif %}
+        </div>
+</div>
+
+
 
 {% endblock %}

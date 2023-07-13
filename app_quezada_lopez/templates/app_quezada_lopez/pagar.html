@@ -3,10 +3,23 @@
 {% block contenido %}
 
 {% load static %}
-<BR><BR>
-<h5> ESTAMOS PRESENTANDO PROBLEMAS DE CONECCION CON LA PAGINA DE PAGO</h5>
+<style>
+.fondo{    
+   background: #0a122a;
+}
+</style>
+<div class="fondo">
 <BR><BR>
 
+<h5> ESTAMOS PRESENTANDO PROBLEMAS DE CONECCION CON LA PAGINA DE PAGO</h5>
+<script>
+    setTimeout(function() {
+        window.location.href = "{% url 'carrito' %}";
+    }, 3000);
+    </script> 
+
+<BR><BR>
+</div>
 
 
 {% endblock %}

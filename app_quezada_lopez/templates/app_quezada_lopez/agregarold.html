@@ -98,16 +98,16 @@
     
         <div class="container1">
  
-            <h1>Agregar Productonuevooooooo</h1>
+            <h1>Agregar Producto</h1>
             <form action="{% url 'agregarrec' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <label for="nombre_produ">Nombre del productosssss</label><br>
+                <label for="nombre_produ">Nombre del producto</label><br>
                 <input type="text" name="nombre_produ"><br><br>
                 <label for="descripcion">Descripcion</label><br>
                 <input type="text" name="descripcion"><br><br>
                 <label for="valor">Valor</label><br>
                 <input type="text" name="valor"><br><br>
-                <label  class="fotillo"    for="foto">Foto</label><br>
+                <label  class="fotillo" for="foto">Foto</label><br>
                 <input type="file" name="foto" id="new"><br><br>
                 <button class="btn_agrega"  type="submit" id="new">Agregar</button>
             </form>

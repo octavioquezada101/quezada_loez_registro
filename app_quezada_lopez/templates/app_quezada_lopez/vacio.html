@@ -1,0 +1,19 @@
+{% extends 'app_quezada_lopez/base.html' %}
+
+{% block contenido %}
+
+{% load static %}
+
+<div>
+    <img src="{% static 'app_quezada_lopez/imagenes/sincompras.jpg' %}" alt="Imagen actual" height="140px" width="140px">
+    <div class="alert alert-danger text-center">Sin Productos lo estamos redireccionando a pagina de tienda</div>
+    <script>
+        setTimeout(function() {
+            window.location.href = "{% url 'mantenedor' %}";
+        }, 3000);
+        </script> 
+
+</div>
+
+
+{% endblock %}

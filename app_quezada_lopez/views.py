@@ -16,6 +16,8 @@ def carrito(request):
 
 def home(request):
     return render(request, 'app_quezada_lopez/home.html')
+def vacio(request):
+    return render(request, 'app_quezada_lopez/vacio.html')
 
 def pagar(request):
     return render(request, 'app_quezada_lopez/pagar.html')

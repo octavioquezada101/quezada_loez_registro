@@ -107,6 +107,39 @@
         align-items: center;
         height: 100vh;
     }*/
+    .agregarcarro {
+      background-color: #0056b3;
+        color: white;
+        border-radius: 20px;
+        padding: 10px 10px;
+        font-size: 10px;
+        text-decoration: none;
+    }
+    .ircarro {
+        background-color: #0056b3;
+        color: white;
+        border-radius: 20px;
+        padding: 10px 10px;
+        font-size: 15px;
+        text-decoration: none;
+        position: absolute; /* Modificado */
+        top: 10px;
+        right: 20px;
+    }
+    .esquina {
+        position: relative;
+    }
+
+    table tr td{
+      width: 1%;
+      white-space: nowrap;
+    }
+
+    thead th{
+      width: 1%;
+      white-space: nowrap;
+      align-items: center;
+    }
 </style>
 
 
@@ -124,9 +157,17 @@
 
 
 <body>
-  <div class="contenedor">     
+  <div class="contenedor">  
+    {% if not user.is_superuser %}
+    <div class="esquina">
+      <a href="{% url 'carrito' %}"><button  class="ircarro">Ir al carro</button></a>
+    </div> 
+    {% endif %}
+     
         <div class="container">          
             <h1>Productos</h1>
+            <br>
+
             <table id="customers" border="1">
                 <thead>
                     <th>Id</th>
@@ -142,7 +183,7 @@
                       <td>{{ x.id }}</td>
                       <td>{{ x.nombre_produ }}</td>
                       <td>{{ x.descripcion }}</td>
-                      <td>${{ x.valor }}</td>
+                      <td>$ {{ x.valor }}</td>
                       <td>
                           {% if x.foto %}
                               <img src="{{ x.foto.url }}" alt="Imagen del Producto" height="100px" width="100px">
@@ -158,7 +199,7 @@
                             </a>
                           </td>
                       {% else %}
-                      <td><a href="{% url 'Add' x.id %}"><button type="">agregar al carrito</button></a></td>
+                      <td><a href="{% url 'Add' x.id %}"><button  class="agregarcarro">Agregar al carro</button></a></td>
                       {% endif %}
                   </tr>
                 {% endfor %}
